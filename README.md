@@ -3,11 +3,13 @@
 
 Includes Basic Understanding of Combinatorics, Game Theory, and Differentations 
 
+Still growing!!
+
 ## Differentation 
 
 ***FOR 1D ARRAYS***
 
-See [diff notes](https://github.com/eddymina/numerical_optimization/blob/master/diff_notes.pdf) for explanation 
+See [diff notes](https://github.com/eddymina/numerical_optimization/blob/master/diff_notes.pdf) for my through mathematical explanation on gradient approximations
 
 #### `center_grad(f,x,order,h=1e-2,precision=2)`:
 
@@ -17,9 +19,9 @@ Computes the numerical gradient up the 4th derivative using center gradient tayl
 
 #### `diff_grad(y,x,order=1,boundaries=False)`:
 
-Rough measurement of the Rate of Change/ 
+Rough measurement of the Rate of Change
 
-Boundaries includes creating a approximation of boundaries. This performs worse with higher order derivatives. Boundaries are approximated 
+Boundaries includes creating a approximation of boundaries. This performs worse with higher order derivatives. Boundaries are approximated using one sided grads
 
 
 ```python
@@ -45,7 +47,7 @@ print(dg.shape, dg_no_boundaries.shape)
 ```
 
 <p align="center"> 
-<img src="sample.plots.png">
+<img src="sample_plots.png">
 </p>
 
 
@@ -55,6 +57,7 @@ print(dg.shape, dg_no_boundaries.shape)
 
 Hungarian Matrix Still in Progress
 
+##### Simple Factorials and Combinatorics 
 
 ```python
 
@@ -69,6 +72,7 @@ Hungarian Matrix Still in Progress
 >>combination(n=10,r=2) #order does matter AB = BA (less outcomes)
 45
 ```
+##### Gale Shapely Matching Algo Used in dating pools and pair based problems
 
 ```python
 # Gale Shapley Matching Alg
