@@ -69,32 +69,32 @@ class gale_shapley:
 		return engaged
 
 
-	def check(self):
+	# def check(self):
 
-		engaged= self.match()
-		inverseengaged = dict((v,k) for k,v in engaged.items())
-		for she, he in engaged.items():
-		    shelikes = self.galprefers[she]
-		    shelikesbetter = shelikes[:shelikes.index(he)]
-		    helikes = self.guyprefers[he]
-		    helikesbetter = helikes[:helikes.index(she)]
-		    for guy in shelikesbetter:
-		        guysgirl = inverseengaged[guy]
-		        guylikes = self.guyprefers[guy]
-		        if guylikes.index(guysgirl) > guylikes.index(she):
-		            print("%s and %s like each other better than "
-		                  "their present partners: %s and %s, respectively"
-		                  % (she, guy, he, guysgirl))
-		            return False
-		    for gal in helikesbetter:
-		        girlsguy = engaged[gal]
-		        gallikes = self.galprefers[gal]
-		        if gallikes.index(girlsguy) > gallikes.index(he):
-		            print("%s and %s like each other better than "
-		                  "their present partners: %s and %s, respectively"
-		                  % (he, gal, she, girlsguy))
-		            return False
-		return True
+	# 	engaged= self.match()
+	# 	inverseengaged = dict((v,k) for k,v in engaged.items())
+	# 	for she, he in engaged.items():
+	# 	    shelikes = self.galprefers[she]
+	# 	    shelikesbetter = shelikes[:shelikes.index(he)]
+	# 	    helikes = self.guyprefers[he]
+	# 	    helikesbetter = helikes[:helikes.index(she)]
+	# 	    for guy in shelikesbetter:
+	# 	        guysgirl = inverseengaged[guy]
+	# 	        guylikes = self.guyprefers[guy]
+	# 	        if guylikes.index(guysgirl) > guylikes.index(she):
+	# 	            print("%s and %s like each other better than "
+	# 	                  "their present partners: %s and %s, respectively"
+	# 	                  % (she, guy, he, guysgirl))
+	# 	            return False
+	# 	    for gal in helikesbetter:
+	# 	        girlsguy = engaged[gal]
+	# 	        gallikes = self.galprefers[gal]
+	# 	        if gallikes.index(girlsguy) > gallikes.index(he):
+	# 	            print("%s and %s like each other better than "
+	# 	                  "their present partners: %s and %s, respectively"
+	# 	                  % (he, gal, she, girlsguy))
+	# 	            return False
+	# 	return True
 
 
 def sample_data():
@@ -175,8 +175,7 @@ class hungarian:
 
 
 if __name__ == '__main__':
-	# guyprefers,galprefers = sample_data()
-	# gale_shapley(guyprefers,galprefers).match(True)
+
 
 
 	usr_pref = {'userA' :["backcatcher", "center field", "short stop"],
@@ -191,8 +190,6 @@ if __name__ == '__main__':
 	h.weight_matrix(print_matrix= True)
 	print('')
 	print('Results:', h.solve(print_matrix= True))
-
-
 
 
 

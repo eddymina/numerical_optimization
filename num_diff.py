@@ -44,7 +44,7 @@ def diff_grad(y,x,order=1,boundaries=False):
 
 
 
-def center_grad(f,x,order,h=1e-2,precision=2):
+def center_grad(f,x,order,h=1e-2,precision=6):
 
 	assert(type(order)==int)
 	assert(type(x) is np.ndarray)
@@ -64,25 +64,40 @@ def center_grad(f,x,order,h=1e-2,precision=2):
 	elif order ==4: 
 		return np.round((f(x+2*h)+f(x-2*h)+6*f(x)-4*f(x+h)-4*f(x-h))/(h**4),precision)
 
+	elif order>=5:
+		return "NO SUPPORT FOR DERIV > 4th order"
+
 
 
 
 def func(x):                 
-	y = np.exp(-2.0 * x)
-	return (1.0 - y) / (1.0 + y)
+	return  1. / (1. + np.exp(-x))
 
-
-
-
-n=3
 x = np.linspace(-7, 7, 200)
 
-plt.plot(x,func(x),label='original func')
-plt.plot(x,center_grad(func,x,n),color='r',label='center grad')
-plt.plot(x,diff_grad(func(x),x,order=n,boundaries=True),color='b',label='diff grad')
-plt.legend()
-plt.show()
+def sample():
+
+	plt.subplot(121)
+	plt.title('Looking @ center taylor series approx gradient')
+	plt.plot(x,func(x),label='original sigmoid func')
+	plt.plot(x,center_grad(func,x,1),label='center grad order 1')
+	plt.plot(x,center_grad(func,x,2),label='center grad order 2')
+	plt.plot(x,center_grad(func,x,3),label='center grad order 3')
+	plt.plot(x,center_grad(func,x,4),label='center grad order 4')
+	plt.legend()
+
+	plt.subplot(122)
+	plt.title('Looking @ numerical gradient')
+	plt.plot(x,func(x),label='original sigmoid func')
+	plt.plot(x,diff_grad(func(x),x,order=1,boundaries=True),label='diff grad order 1')
+	plt.plot(x,diff_grad(func(x),x,order=2,boundaries=True),label='diff grad order 2')
+	plt.plot(x,diff_grad(func(x),x,order=3,boundaries=True),label='diff grad order 3')
+	plt.plot(x,diff_grad(func(x),x,order=4,boundaries=True),label='diff grad order 4')
+	plt.legend()
+
+	plt.show()
 
 
 
 
+sample()
